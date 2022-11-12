@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.hut.mapper.UseOfClassMapper">
+
+    <resultMap id="useOfClassMap" type="com.hut.entity.UseOfClass">
+        <id property="id" column="id"></id>
+        <result property="teacherId" column="teacher_id"></result>
+        <result property="classId" column="class_id"></result>
+        <result property="courseId" column="course_id"></result>
+        <result property="professionId" column="profession_id"></result>
+        <result property="timeSegment" column="time_segment"></result>
+        <result property="week" column="week"></result>
+    </resultMap>
+
+    <select id="getUseOfClassById" resultMap="useOfClassMap">
+        select tu.id,tt.teacher_name as teacherId,class_id,tc.course_name as courseId,tp.profession_name as professionId,time_segment,week
+        from t_classuse tu
+        left join t_teacher tt on tu.teacher_id = tt.teacher_id
+        left join t_course tc on tu.course_id = tc.course_id
+        left join t_profession tp on tu.profession_id = tp.profession_id
+        where tu.class_id = #{classId}
+    </select>
+
+    <insert id="addUseOfClass">
+        insert into t_classuse(id,teacher_id,class_id,course_id,profession_id,time_segment,week)
+        values (#{id},#{teacherId},#{classId},#{courseId},#{professionId},#{timeSegment},#{week})
+    </insert>
+
+    <delete id="deleteUseOfClass">
+        delete from t_classuse where id = #{id}
+    </delete>
+
+    <delete id="updateUseOfClass">
+        update t_classuse set teacher_id = #{teacherId},course_id = #{courseId},
+        profession_id = #{professionId},time_segment = #{timeSegment}, week = #{week}
+        where id = #{id}
+    </delete>
+
+    <select id="getUseById" resultMap="useOfClassMap">
+        select tu.id,tt.teacher_name as teacherId,class_id,tc.course_name as courseId,tp.profession_name as professionId,time_segment,week
+        from t_classuse tu
+                 left join t_teacher tt on tu.teacher_id = tt.teacher_id
+                 left join t_course tc on tu.course_id = tc.course_id
+                 left join t_profession tp on tu.profession_id = tp.profession_id
+        where tu.id = #{id}
+    </select>
+</mapper>

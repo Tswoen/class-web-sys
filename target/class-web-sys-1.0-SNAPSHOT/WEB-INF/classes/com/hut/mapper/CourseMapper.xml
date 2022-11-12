@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.hut.mapper.CourseMapper">
+    <resultMap id="courseMap" type="com.hut.entity.Course">
+        <id property="courseId" column="course_id"></id>
+        <result property="courseName" column="course_name"></result>
+        <result property="courseScord" column="course_scord"></result>
+        <result property="courseType" column="course_type"></result>
+        <result property="courseProfessionId" column="course_profession_id"></result>
+    </resultMap>
+
+    <select id="selectCourseAll" resultMap="courseMap">
+        select * from t_course
+    </select>
+
+</mapper>

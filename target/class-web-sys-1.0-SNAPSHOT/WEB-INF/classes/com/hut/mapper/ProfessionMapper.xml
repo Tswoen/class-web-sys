@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.hut.mapper.ProfessionMapper">
+    <resultMap id="professionMap" type="com.hut.entity.Profession">
+        <id property="professionId" column="profession_id"></id>
+        <result property="professionName" column="profession_name"></result>
+    </resultMap>
+
+    <select id="selectProfessionAll" resultMap="professionMap">
+        select * from t_profession
+    </select>
+</mapper>

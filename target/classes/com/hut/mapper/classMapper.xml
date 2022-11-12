@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.hut.mapper.classMapper">
+
+    <resultMap id="classMap" type="com.hut.entity.ClassRoom">
+        <id property="classId" column="class_id"></id>
+        <result property="classType" column="class_type"></result>
+        <result property="classContainer" column="class_container"></result>
+        <result property="classMedia" column="class_media"></result>
+    </resultMap>
+
+    <select id="selectAllOfClass" resultMap="classMap">
+        select * from t_class
+    </select>
+
+    <select id="selectClassByLike"  resultMap="classMap">
+        select * from t_class where class_id like '%${id}%'
+    </select>
+
+</mapper>

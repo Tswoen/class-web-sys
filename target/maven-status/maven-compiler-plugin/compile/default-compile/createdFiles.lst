@@ -1,0 +1,9 @@
+com\hut\service\impl\UseOfClassServiceImpl.class
+com\hut\controller\ClassController.class
+com\hut\service\ClassService.class
+com\hut\service\UseOfClassService.class
+com\hut\mapper\classMapper.class
+com\hut\entity\ClassRoom.class
+com\hut\entity\UseOfClass.class
+com\hut\mapper\UseOfClassMapper.class
+com\hut\service\impl\ClassServiceImpl.class
